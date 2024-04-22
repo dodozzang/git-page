@@ -85,6 +85,8 @@
     } else {
       door.style.transform = 'rotateY(-90deg)';
       handle.style.right = '-10px';
+      // 문이 열리면 새로운 페이지로 이동
+      window.location.href = 'https://www.example.com/new-page';
     }
     
     // 문의 상태 업데이트
@@ -93,7 +95,14 @@
 
   // 문 클릭 이벤트 처리
   document.getElementById('door').addEventListener('click', toggleDoor);
+
+  // 뒤로가기 버튼 클릭 이벤트 처리
+  function goBack() {
+    history.back();
+  }
 </script>
+
+<button onclick="goBack()">뒤로 가기</button>
 
 </body>
 </html>
