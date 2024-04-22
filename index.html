@@ -38,37 +38,45 @@
         <p>연락처: [메롱메롱] / [1234]</p>
         <p>좋아하는 채널: <a href="https://www.youtube.com/channel/UCd4FmcWIVdWAy0-Q8OJBloQ">사나고 유튜브</a>
         </p>
-        <!DOCTYPE html>
+        <!-- 첫 번째 페이지: index.html -->
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>문을 열고 닫기</title>
-<style>
-  .door {
-    width: 100px;
-    height: 200px;
-    background-color: brown;
-    position: relative;
-    cursor: pointer;
+<title>첫 번째 페이지</title>
+</head>
+<body>
+
+<h1>첫 번째 페이지</h1>
+<button onclick="openDoor()">문 열기</button>
+
+<script>
+  function openDoor() {
+    window.open('second_page.html', '_self'); // 두 번째 페이지로 이동
   }
-  .handle {
-    width: 20px;
-    height: 20px;
-    background-color: #333;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-  }
-</style>
+</script>
+
+</body>
+</html>
+<!-- 두 번째 페이지: second_page.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>두 번째 페이지</title>
 </head>
 <body>
 
 <div class="door" id="door">
   <div class="handle" id="handle"></div>
 </div>
+
+<button onclick="closeDoor()">문 닫기</button>
+<button onclick="goBack()">이전 페이지로 돌아가기</button>
 
 <script>
   // 문의 상태를 추적하는 변수
@@ -85,24 +93,29 @@
     } else {
       door.style.transform = 'rotateY(-90deg)';
       handle.style.right = '-10px';
-      // 문이 열리면 새로운 페이지로 이동
-      window.location.href = 'https://www.example.com/new-page';
     }
     
     // 문의 상태 업데이트
     isOpen = !isOpen;
   }
 
-  // 문 클릭 이벤트 처리
-  document.getElementById('door').addEventListener('click', toggleDoor);
+  // 문 닫기 함수
+  function closeDoor() {
+    if (isOpen) {
+      toggleDoor();
+      // 문이 닫히면 이전 페이지로 이동
+      history.back();
+    }
+  }
 
   // 뒤로가기 버튼 클릭 이벤트 처리
   function goBack() {
     history.back();
   }
-</script>
 
-<button onclick="goBack()">뒤로 가기</button>
+  // 문 클릭 이벤트 처리
+  document.getElementById('door').addEventListener('click', toggleDoor);
+</script>
 
 </body>
 </html>
