@@ -38,6 +38,66 @@
         <p>연락처: [메롱메롱] / [1234]</p>
         <p>좋아하는 채널: <a href="https://www.youtube.com/channel/UCd4FmcWIVdWAy0-Q8OJBloQ">사나고 유튜브</a>
         </p>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>문을 열고 닫기</title>
+<style>
+  .door {
+    width: 100px;
+    height: 200px;
+    background-color: brown;
+    position: relative;
+    cursor: pointer;
+  }
+  .handle {
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+</style>
+</head>
+<body>
+
+<div class="door" id="door">
+  <div class="handle" id="handle"></div>
+</div>
+
+<script>
+  // 문의 상태를 추적하는 변수
+  let isOpen = false;
+
+  // 문을 열고 닫는 함수
+  function toggleDoor() {
+    const door = document.getElementById('door');
+    const handle = document.getElementById('handle');
+    
+    if (isOpen) {
+      door.style.transform = 'rotateY(0deg)';
+      handle.style.right = '10px';
+    } else {
+      door.style.transform = 'rotateY(-90deg)';
+      handle.style.right = '-10px';
+    }
+    
+    // 문의 상태 업데이트
+    isOpen = !isOpen;
+  }
+
+  // 문 클릭 이벤트 처리
+  document.getElementById('door').addEventListener('click', toggleDoor);
+</script>
+
+</body>
+</html>
+
     </div>
 </body>
 </html>
